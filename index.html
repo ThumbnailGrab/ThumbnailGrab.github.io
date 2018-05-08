@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>youtube thumbnail grabber</title>
+  <script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-flat.css">
+</head>
+<body>
+  <div class="w3-container w3-flat-midnight-blue">
+  <center> <img src="assets/logo.png" alt="Smiley face" height="169" width="300"> </center>
+  </div>
+  <div class="w3-center w3-container w3-animate-right">
+  <input class="w3-input" type="text" id="mytextbox" value="https://www.youtube.com/watch?v=dQw4w9WgXcQ" /><br>
+  </div>
+  <div class="w3-center w3-container w3-animate-bottom">
+  <button class="w3-button w3-block w3-red" onclick="youtube_parser(textbox.value);">get dat thumbnail!</button>
+  </div>
+  <script>var textbox = document.getElementById('mytextbox');</script>
+<script>
+function grabThumbnail() {
+window.location.href = ("https://img.youtube.com/vi/"+textbox.value+"/maxresdefault.jpg")
+}
+</script>
+<br>
+<center>
+<img id="blank" src="assets/none.png" alt="no image found" width="500" height="281">
+</center>
+<script>
+function getThumbnail() {
+    document.getElementById("blank").src = "https://img.youtube.com/vi/"+textbox.value+"/maxresdefault.jpg";
+}
+</script>
+<script>
+function youtube_parser(url){
+  var regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+  var match = url.match(regExp);
+  if (match && match[2].length == 11) {
+  document.getElementById("blank").src = "https://img.youtube.com/vi/"+(match[2])+"/maxresdefault.jpg";    //error
+  }
+}
+</script>
+</body>
+</html>
