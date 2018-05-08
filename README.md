@@ -1,2 +1,0 @@
-# ThumbnailGrab.github.io
-AWESOME
